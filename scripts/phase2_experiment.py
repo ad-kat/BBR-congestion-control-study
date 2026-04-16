@@ -69,7 +69,7 @@ RESULTS_DIRS = {
 BOTTLENECK_BW_MBPS = 100
 
 # Bandwidth of access links (sender->switch, receiver->switch). Way higher to not be the bottleneck.
-ACCESS_BW_MBPS = 1000
+ACCESS_BW_MBPS = 500
 
 # iperf3 server port. 5201 is default. 5202 is for the second sender.
 IPERF_PORT_ELEPHANT = 5201
@@ -259,7 +259,7 @@ def run_single_experiment(cca, buf_bytes, rtt_ms):
         "cca": cca,
         "buffer_bytes": buf_bytes,
         "rtt_ms": rtt_ms,
-        "timestamp": datetime.datetime.utcnow().isoformat(),
+        "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "mice_fcts_s": [],              # per-mouse FCT list
         "elephant_goodput_mbps": None,
         "elephant_retransmissions": None,
@@ -314,7 +314,7 @@ def run_single_experiment(cca, buf_bytes, rtt_ms):
             mice_start = time.monotonic()
 
             mice_cmd = (
-                f"iperf3 -c {recv_ip} -n {MICE_SIZE_MB}M "
+                f"timeout 30 iperf3 -c {recv_ip} -n {MICE_SIZE_MB}M "
                 f"-C {cca} -J -p {IPERF_PORT_MICE} "
                 f"> /tmp/iperf_mice_{i}.json 2>&1"
             )
@@ -324,6 +324,7 @@ def run_single_experiment(cca, buf_bytes, rtt_ms):
             fct = mice_end - mice_start
             mice_fcts.append(fct)
             print(f"    Mouse {i+1}/{NUM_MICE}: FCT = {fct:.4f}s")
+        
 
         result["mice_fcts_s"] = mice_fcts
 
