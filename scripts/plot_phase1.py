@@ -6,6 +6,23 @@ produces a throughput-vs-buffer-size plot replicating Cao et al. IMC 2019 Figure
 Run after run_phase1.sh finishes. Results must be in results/phase1/.
 If they're not there, you haven't run the experiments yet. Classic.
 """
+'''
+Why our plot doesn't match it properly (fig 8a of cao et al.)
+
+Because:
+--Their x-axis is log scale (10⁴ to 10⁷ bytes) — ours is categorical
+--Their setup is 1 Gbps, 20ms RTT — ours is 100 Mbps, 40ms RTT
+--They show BBR + CUBIC + Total simultaneously (fairness/coexistence 
+experiment) — ours shows them separately as bulk flows
+--Their buffer range goes to 100MB — ours stops at 10MB
+
+So our plot doesn't cleanly replicate any single figure from the paper. 
+What we actually reproduced is closest to the Section 4.1 narrative — 
+the general finding that BBR handles shallow buffers better than CUBIC — 
+but not any specific figure's exact setup.
+
+
+'''
 
 import json
 import os
@@ -94,8 +111,7 @@ def plot_figure2(results: dict) -> None:
     ax.set_xticklabels(BUFFER_LABELS, fontsize=9)
     ax.set_xlabel("Buffer Size", fontsize=10)
     ax.set_ylabel("Throughput (Mbps)", fontsize=10)
-    ax.set_title("Throughput vs. Buffer Size — BBR vs. CUBIC\n(Replicating Cao et al. IMC 2019 Fig. 2)", fontsize=10)
-
+    ax.set_title("Throughput vs. Buffer Size — BBR vs. CUBIC\n(Reproducing Cao et al. IMC 2019 §4.1 / Fig. 8a behavior)", fontsize=10)
     ax.set_ylim(bottom=0)
     ax.yaxis.set_minor_locator(ticker.AutoMinorLocator())
     ax.grid(axis='y', linestyle='--', linewidth=0.5, alpha=0.6)
