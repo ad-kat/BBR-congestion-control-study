@@ -1,0 +1,1 @@
+savedcmd_/home/adkat/bbr-project/modules/Module.symvers :=  scripts/mod/modpost -M -m       -o /home/adkat/bbr-project/modules/Module.symvers -T /home/adkat/bbr-project/modules/modules.order -i Module.symvers -e 
