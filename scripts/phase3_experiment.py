@@ -53,7 +53,8 @@ from mininet.clean import cleanup
 
 # The three probe-up gain values we're testing as our "novel contribution".
 # 1.25 is the stock BBRv1 baseline, already captured in Phase 2. Don't add it here.
-GAIN_VARIANTS = [1.10, 1.15, 1.20]
+GAIN_VARIANTS = [1.10, 1.15, 1.20]  #-----will put it back to normal after analysis...it's a drag to do this rn(54 min each execution FML)
+#GAIN_VARIANTS = [1.15, 1.20]
 
 # Maps gain float → the .ko module filename we built.
 # Yes, we're encoding the gain into the filename. No, there's no better way in a shell env.
@@ -71,8 +72,8 @@ MODULE_FILES = {
 # In that case, rename the struct tcp_congestion_ops entry in the C file. You have to.
 MODULE_CCA_NAME = {
     1.10: "bbr_mod",   # must match .name field in tcp_congestion_ops in tcp_bbr_gainXXX.c
-    1.15: "bbr_mod",
-    1.20: "bbr_mod",
+    1.15: "bbr_mod115",
+    1.20: "bbr_mod120",
 }
 
 # Output dirs — one per gain variant. Matches the repo structure.
