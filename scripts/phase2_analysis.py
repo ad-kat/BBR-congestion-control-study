@@ -91,17 +91,10 @@ def load_results(bbrv1_dir, bbrv3_dir):
             try:
                 with open(f) as fp:
                     data = json.load(fp)
-                 
-
                 if "error" in data:
-                    if len(data.get("mice_fcts_s", [])) == 0:
-                        print(f"  [SKIP] {f.name}: error and no FCT data")
-                        continue
-                    else:
-                        print(f"  [WARN] {f.name}: has error but FCT data present — loading anyway")             
-
-
-
+                    # Experiment blew up mid-run. Noted. Moving on.
+                    print(f"  [SKIP] {f.name}: error — '{data['error']}'")
+                    continue
                 all_results.append(data)
             except (json.JSONDecodeError, IOError) as e:
                 print(f"  [SKIP] {f.name}: parse error — {e}")
