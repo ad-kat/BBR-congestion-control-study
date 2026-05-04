@@ -1,0 +1,11 @@
+{
+  "cca": "bbr3",
+  "buffer_bytes": 10000000,
+  "rtt_ms": 100,
+  "timestamp": "2026-05-03T23:23:27.411677+00:00",
+  "mice_fcts_s": [],
+  "elephant_goodput_mbps": null,
+  "elephant_retransmissions": null,
+  "queue_stats_midpoint": {},
+  "jains_fairness": null
+}
