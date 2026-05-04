@@ -1,0 +1,31 @@
+{
+  "pacing_gain": 1.2,
+  "cca": "bbr_mod120",
+  "buffer_bytes": 10000,
+  "rtt_ms": 10,
+  "timestamp": "2026-05-01T02:44:14.142215+00:00",
+  "mice_fcts_s": [
+    3.0744164070001716,
+    3.0701495169996633,
+    11.089659502000359,
+    13.227681600999858,
+    30.005939839000348,
+    30.013429144999463,
+    0.9626884959998279,
+    23.14903067799969,
+    0.2612931319999916,
+    0.050851728999987245
+  ],
+  "elephant_goodput_mbps": null,
+  "elephant_retransmissions": null,
+  "queue_stats_midpoint": {
+    "bytes_sent": 42060,
+    "pkts_sent": 544,
+    "dropped": 0,
+    "overlimits": 0,
+    "backlog_bytes": 0,
+    "backlog_pkts": 0
+  },
+  "jains_fairness": 0.16094723973551595,
+  "error": "unsupported format string passed to NoneType.__format__"
+}
