@@ -1,0 +1,30 @@
+{
+  "pacing_gain": 1.15,
+  "cca": "bbr_mod115",
+  "buffer_bytes": 10000,
+  "rtt_ms": 40,
+  "timestamp": "2026-05-04T17:29:38.357332+00:00",
+  "mice_fcts_s": [
+    2.9718020350010192,
+    29.233441560001665,
+    4.1128076129971305,
+    15.893798641998728,
+    0.42952464599875384,
+    7.347558557001321,
+    0.09959583299860242,
+    30.019271894001577,
+    11.948745261001022,
+    24.916461616998276
+  ],
+  "elephant_goodput_mbps": 5.577994884196687,
+  "elephant_retransmissions": 4772,
+  "queue_stats_midpoint": {
+    "bytes_sent": 136285,
+    "pkts_sent": 1704,
+    "dropped": 0,
+    "overlimits": 0,
+    "backlog_bytes": 0,
+    "backlog_pkts": 0
+  },
+  "jains_fairness": 0.1674989431967194
+}
